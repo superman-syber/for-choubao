@@ -73,13 +73,6 @@ def get_airqu():
 #print("-------------------------------")
 
 
-
-#def get_weather():
-#  url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
-#  res = requests.get(url).json()
-#  weather = res['data']['list'][0]
-#  return weather['weather'], math.floor(weather['temp']), math.floor(weather['high']), math.floor(weather['low'])
-
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
   return delta.days
@@ -98,6 +91,9 @@ def get_words():
     return get_words()
   return words.json()['data']['text']
 
+def format_temperature(temperature):
+  return math.floor(temperature)
+
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
 
@@ -108,19 +104,17 @@ weather = get_weather()
 airqu = get_airqu()
 realtimeweather = get_realtimeweather()
 wm = WeChatMessage(client)
-# wea, temperature, max_temperature, min_temperature = get_weather()
 data = {
-  "date":{
-    "value":today.strftime('%Y-%m-%d')
+  "date": {
+    "value": today.strftime('%Y-%m-%d')
   },
-  "week":{
-    "value":week
+  "week": {
+    "value": week
   },
-  "city":{
-    "value":city
+  "city": {
+    "value": city
   },
-  "weather":{
-#    "value":wea
+  "weather": {
     "value": f"白天：{weather['textDay']}  ;  夜晚：{weather['textNight']}",
     "color": get_random_color()
   },
@@ -146,41 +140,31 @@ data = {
   },
   # 实时温度
   "temperature": {
-    "value": realtimeweather,
+    "value": realtimeweather+"℃",
     "color": get_random_color()
   },
   # 最高温
   "highest": {
-    "value": weather['tempMax'],
+    "value": weather['tempMax']+"℃",
     "color": get_random_color()
   },
   # 最低温度
   "lowest": {
-    "value": weather['tempMin'],
+    "value": weather['tempMin']+"℃",
     "color": get_random_color()
   },
-
-#  "temperature":{
-#    "value":temperature
-#  },
-#  "max_temperature":{
-#    "value":max_temperature
-#  },
-#  "min_temperature":{
-#    "value":min_temperature
-#  },
-  "love_days":{
-    "value":get_count(),
+  "love_days": {
+    "value": get_count(),
     "color": get_random_color()
   },
-  "birthday_left":{
-    "value":get_birthday(),
+  "birthday_left": {
+    "value": get_birthday(),
     "color": get_random_color()
   },
-  "words":{
-    "value":get_words(), 
-    "color":get_random_color()
-  }
+  "words": {
+    "value": get_words(),
+    "color": get_random_color()
+  },
 }
 #print(data)
 #print("--------------------")
