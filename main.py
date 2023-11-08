@@ -105,6 +105,9 @@ airqu = get_airqu()
 realtimeweather = get_realtimeweather()
 wm = WeChatMessage(client)
 data = {
+  "love": {
+    "value": "我最最亲爱的臭宝😘😘😘"
+  },
   "date": {
     "value": today.strftime('%Y-%m-%d')
   },
