@@ -121,40 +121,43 @@ data = {
   },
   "weather":{
 #    "value":wea
-    "value": f"白天：{weather['textDay']}  ;  夜晚：{weather['textNight']}"
+    "value": f"白天：{weather['textDay']}  ;  夜晚：{weather['textNight']}",
+    "color": get_random_color()
   },
   # 湿度
   "humidity": {
-    "value": weather['humidity']+"%"
+    "value": weather['humidity']+"%",
+    "color": get_random_color()
   },
   # 风力
   "wind": {
-    "value": f"白天：{weather['windScaleDay']}级  ;  夜晚：{weather['windScaleNight']}级"
+    "value": f"白天：{weather['windScaleDay']}级  ;  夜晚：{weather['windScaleNight']}级",
+    "color": get_random_color()
   },
 
   "air_data": {
-    "value": airqu['aqi']
-#    "color": get_random_color()
+    "value": airqu['aqi'],
+    "color": get_random_color()
   },
   # 空气质量
-  "air_quality空气质量": {
-    "value": airqu['category']
-#    "color": get_random_color()
+  "air_quality": {
+    "value": airqu['category'],
+    "color": get_random_color()
   },
   # 实时温度
-  "temperature实时温度": {
-    "value": realtimeweather
-#    "color": get_random_color()
+  "temperature": {
+    "value": realtimeweather,
+    "color": get_random_color()
   },
   # 最高温
-  "highest最高温": {
-    "value": weather['tempMax']
-#    "color": get_random_color()
+  "highest": {
+    "value": weather['tempMax'],
+    "color": get_random_color()
   },
   # 最低温度
-  "lowest最低温": {
-    "value": weather['tempMin']
-#    "color": get_random_color()
+  "lowest": {
+    "value": weather['tempMin'],
+    "color": get_random_color()
   },
 
 #  "temperature":{
@@ -167,13 +170,16 @@ data = {
 #    "value":min_temperature
 #  },
   "love_days":{
-    "value":get_count()
+    "value":get_count(),
+    "color": get_random_color()
   },
   "birthday_left":{
-    "value":get_birthday()
+    "value":get_birthday(),
+    "color": get_random_color()
   },
   "words":{
-    "value":get_words(), "color":get_random_color()
+    "value":get_words(), 
+    "color":get_random_color()
   }
 }
 #print(data)
