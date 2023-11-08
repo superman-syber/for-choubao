@@ -143,17 +143,17 @@ data = {
   },
   # 实时温度
   "temperature": {
-    "value": realtimeweather+"℃",
+    "value": realtimeweather,
     "color": get_random_color()
   },
   # 最高温
   "highest": {
-    "value": weather['tempMax']+"℃",
+    "value": weather['tempMax'],
     "color": get_random_color()
   },
   # 最低温度
   "lowest": {
-    "value": weather['tempMin']+"℃",
+    "value": weather['tempMin'],
     "color": get_random_color()
   },
   "love_days": {
